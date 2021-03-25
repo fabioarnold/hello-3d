@@ -1,0 +1,9 @@
+[submodule "deps/sdl2"]
+	path = deps/sdl2
+	url = https://github.com/MasterQ32/SDL.zig
+[submodule "deps/zlm"]
+	path = deps/zlm
+	url = https://github.com/ziglibs/zlm
+[submodule "deps/zgl"]
+	path = deps/zgl
+	url = https://github.com/ziglibs/zgl
