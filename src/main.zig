@@ -2,9 +2,9 @@ const std = @import("std");
 const sdl = @import("sdl2");
 const gl = @import("zgl");
 const zlm = @import("zlm");
-const m = zlm.specializeOn(f32);
+const m = zlm.SpecializeOn(f32);
 
-pub fn main() anyerror!void {
+pub fn main() !void {
     try sdl.init(.{ .video = true, .events = true });
     defer sdl.quit();
 
@@ -66,7 +66,7 @@ pub fn main() anyerror!void {
         const mvp = rot.mul(trans.mul(proj));
 
         gl.enableVertexAttribArray(0);
-        gl.vertexAttribPointer(0, 3, .float, false, 0, null);
+        gl.vertexAttribPointer(0, 3, .float, false, 0, 0);
         program.uniformMatrix4(mvp_loc, false, &.{mvp.fields});
         program.uniform4f(color_loc, 0.97, 0.64, 0.11, 1);
         gl.drawArrays(.triangles, 0, 120);
