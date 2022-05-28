@@ -11,7 +11,7 @@ pub fn build(b: *std.build.Builder) !void {
     if (exe.target.isWindows()) {
         exe.addVcpkgPaths(.dynamic) catch @panic("vcpkg not installed");
         if (exe.vcpkg_bin_path) |bin_path| {
-            for (&[_][]const u8{"SDL2.dll", "epoxy-0.dll"}) |dll|
+            for (&[_][]const u8{ "SDL2.dll", "epoxy-0.dll" }) |dll|
                 b.installBinFile(try std.fs.path.join(b.allocator, &.{ bin_path, dll }), dll);
         }
         exe.subsystem = .Windows;
@@ -19,7 +19,7 @@ pub fn build(b: *std.build.Builder) !void {
     exe.addPackagePath("zgl", "deps/zgl/zgl.zig");
     exe.addPackagePath("zlm", "deps/zlm/zlm.zig");
     const sdk = Sdk.init(b);
-    exe.addPackage(sdk.getWrapperPackage("sdl2")); 
+    exe.addPackage(sdk.getWrapperPackage("sdl2"));
     sdk.link(exe, .dynamic); // link SDL2 as a shared library
     exe.linkSystemLibrary("epoxy");
     if (exe.target.isDarwin()) {

@@ -67,12 +67,12 @@ pub fn main() !void {
 
         gl.enableVertexAttribArray(0);
         gl.vertexAttribPointer(0, 3, .float, false, 0, 0);
-        program.uniformMatrix4(mvp_loc, false, &.{mvp.fields});
-        program.uniform4f(color_loc, 0.97, 0.64, 0.11, 1);
+        gl.uniformMatrix4fv(mvp_loc, false, &.{mvp.fields});
+        gl.uniform4f(color_loc, 0.97, 0.64, 0.11, 1);
         gl.drawArrays(.triangles, 0, 120);
-        program.uniform4f(color_loc, 0.98, 0.82, 0.6, 1);
+        gl.uniform4f(color_loc, 0.98, 0.82, 0.6, 1);
         gl.drawArrays(.triangles, 120, 66);
-        program.uniform4f(color_loc, 0.6, 0.35, 0.02, 1);
+        gl.uniform4f(color_loc, 0.6, 0.35, 0.02, 1);
         gl.drawArrays(.triangles, 186, 90);
         gl.disableVertexAttribArray(0);
 
